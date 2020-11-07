@@ -1,0 +1,21 @@
+>On Unix-like operating systems, the nohup command executes another command, and instructs the system to continue running it even if the session is disconnected.
+
+>When using the command shell, prefixing a command with nohup prevents the command from being aborted automatically when you log out or exit the shell.
+
+>If standard input is a terminal, nohup redirects it from /dev/null. Therefore, terminal input is not possible when running a command with nohup.
+
+>If standard output is a terminal, command output is appended to the file nohup.out if possible, or $HOME/nohup.out otherwise.
+>If standard error is a terminal, it is redirected to standard output.
+
+
+>To save output to a file named file, use "nohup command > file".
+
+>nohup mycommand
+Run the command mycommand. It will not receive input. All output, including any error messages, will be written to the file nohup.out in the working directory, or in your home directory. If mycommand is running when you log out or close the terminal, mycommand will not terminate.
+>nohup mycommand &
+Same as the previous command, but this form (when using the bash shell) returns you immediately to the shell prompt. The "&" symbol at the end of the command instructs bash to run nohup mycommand in the background. It can be brought back to the foreground with the fg bash builtin command.
+
+>When using &, you'll see the bash job ID in brackets, and the process ID (PID) listed after. For example:
+
+[1] 25132
+You can use the PID to terminate the process prematurely. For instance, to send it the TERM (terminate) signal with the kill command:
